@@ -20,6 +20,9 @@ class Admin extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('dashboard');
+
+		$data['title'] = 'Home';
+		$data['content'] = $this->load->view('pages/dashboard', [], true);
+    	$this->load->view('layouts/main', $data);
 	}
 }
