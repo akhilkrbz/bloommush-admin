@@ -60,7 +60,7 @@
             <span class="nav-link">Navigation</span>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="<?php echo base_url(); ?>">
                 <span class="menu-icon">
                     <i class="mdi mdi-speedometer"></i>
                 </span>
@@ -68,7 +68,7 @@
             </a>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
                 <span class="menu-icon">
                     <i class="mdi mdi-laptop"></i>
                 </span>
@@ -79,7 +79,6 @@
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="<?php echo base_url(); ?>index.php/bed/list">List of Beds</a></li>
                     <li class="nav-item"> <a class="nav-link" href="<?php echo base_url(); ?>index.php/bed/create">New Bed</a></li>
-                    </li>
                 </ul>
             </div>
         </li>
@@ -93,9 +92,8 @@
             </a>
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Farm expenses</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Other expenses</a></li>
-                    </li>
+                    <li class="nav-item"> <a class="nav-link" href="<?php echo base_url(); ?>index.php/expense/types">Expense Types</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="<?php echo base_url(); ?>index.php/expense/list">Expenses</a></li>
                 </ul>
             </div>
         </li>

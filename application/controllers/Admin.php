@@ -22,7 +22,37 @@ class Admin extends CI_Controller {
 	{
 
 		$data['title'] = 'Home';
-		$data['content'] = $this->load->view('pages/dashboard', [], true);
+
+		//Total expenses
+		$query = array(
+			'table' => 'expenses',
+			'select' => 'sum(amount) as total_amount',
+		);
+		$data['list'] = resultArray($query);
+		$data['total_amount'] = isset($data['list'][0]['total_amount']) ? $data['list'][0]['total_amount'] : 0;
+
+
+		//Daily expenses
+		$de_query = array(
+			'table' => 'expenses',
+			'select' => 'sum(amount) as total_amount',
+			'where' => array(
+				'DATE(date)' => date('Y-m-d')
+			)
+		);
+		$data['daily_expenses'] = resultArray($de_query);
+		$data['daily_expense'] = isset($data['daily_expenses'][0]['total_amount']) ? $data['daily_expenses'][0]['total_amount'] : 0;
+
+		//Total Beds
+		$bedquery = array(
+			'table' => 'beds',
+			'select' => 'sum(no_of_beds) as total_beds',
+		);
+		$data['bedslist'] = resultArray($bedquery);
+		$data['total_beds'] = isset($data['bedslist'][0]['total_beds']) ? $data['bedslist'][0]['total_beds'] : 0;
+
+
+		$data['content'] = $this->load->view('pages/dashboard', $data, true);
     	$this->load->view('layouts/main', $data);
 	}
 }

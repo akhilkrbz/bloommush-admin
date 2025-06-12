@@ -15,6 +15,8 @@
                 <div class="card-body">
                     <h4 class="card-title">List of beds</h4>
                     <!-- <p class="card-description"> Add class <code>.table-hover</code> -->
+                    <p class="card-description">
+                        <a href="<?php echo base_url(); ?>index.php/bed/create" class="btn btn-success">Add Bed</a>
                     </p>
                     <div class="table-responsive">
                         <table class="table table-hover">
@@ -29,7 +31,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach($beds as $key => $bed) { ?>
+                                <?php $total_beds = 0; foreach($beds as $key => $bed) { $total_beds = $total_beds + $bed['no_of_beds']; ?>
                                 <tr>
                                     <td><?php echo $key + 1; ?>.</td>
                                     <td><?php echo date('d-m-Y', strtotime($bed['date_of_bed'])); ?></td>
@@ -40,6 +42,16 @@
                                 </tr>
                                <?php } ?>
                             </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th></th>
+                                    <th>Total Beds</th>
+                                    <th><?php echo $total_beds; ?></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>

@@ -48,11 +48,13 @@ class Bed extends CI_Controller {
 	{
 		$data['title'] = 'Bed create';
 
-		$this->db->select('*');
-		$this->db->from('beds');
-		$this->db->order_by('date_of_bed', 'desc');
-		$this->db->order_by('id', 'desc');
-		$data['beds'] = $this->db->get()->result_array();
+		$query = array(
+			'table' => 'beds',
+			'select' => '*',
+			'sort' => ['date_of_bed' => 'desc', 'id' => 'desc'],
+			// 'sort_type' => 'desc',
+		);
+		$data['beds'] = resultArray($query);
 
 		$data['content'] = $this->load->view('bed/list', $data, true);
     	$this->load->view('layouts/main', $data);
